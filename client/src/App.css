@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Fresca|Raleway|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+#root {
+   font-family: 'Roboto', sans-serif;
+   font-family: 'Montserrat', sans-serif;
+   font-size: 16px;
+}
+
+.App {
+  background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
+  width: 100vw;
+  height: 100vh;
+}
+
+.navCon {
+  display: flex;
+  width: 100vw;
+  height: 40px;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.title {
+color: white;
+font-size: 1.5rem;
+}
+
+.loginCon {
+  position: absolute;
+  right: 15px;
+  top: 14px;
+}
+
+.loginCon button {
+  padding: 2px 9px;
+  border: none;
+  font-size: 0.9rem;
+  color: white;
+  background-color: #0bcdfe;
+  border-radius: 1px;
+  cursor: pointer;
+}
