@@ -6,21 +6,17 @@ class LoginForm extends Component {
   state = {
     username: "",
     password: "",
-    login: [],
     islogged: false,
     warning: false
   }
 
-  componentDidMount() {
-    fetch('/login')
-       .then(res => res.json())
-       .then(login => this.setState({ login: login }))
-  }
+
 
   handleLogin = ()=> {
-    const { username, password, login } = this.state
+    const { username, password } = this.state
+    const { loginList } = this.props
 
-    let islogged = login.find((log)=>{
+    let islogged = loginList.find((log)=>{
      return  log.username === username && log.password === password ? true: false
     })
     if(islogged) {

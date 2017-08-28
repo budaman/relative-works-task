@@ -9,7 +9,6 @@ class Login extends Component {
     const { logged } = this.props
 
     return (
-      <div>
         <div className="navCon">
           <div className="header">
             <div className="title">Task Manager</div>
@@ -30,8 +29,6 @@ class Login extends Component {
 
           </div>
         </div>
-
-      </div>
     );
   }
 }

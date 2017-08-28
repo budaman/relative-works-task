@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Login from './components/Login.js';
 import LoginForm from './components/LoginForm';
+import Admin from './components/Admin.js'
 
 class App extends Component {
 
@@ -10,8 +11,10 @@ class App extends Component {
     loading: true,
     logged: false,
     toggleLogin: false,
-    whologged: []
+    whologged: [],
+    loginList: []
   }
+
 
   toggleLoginForm = () => {
     this.setState({
@@ -41,10 +44,13 @@ fetch('/tasks')
      tasks,
      loading: false
    }));
+   fetch('/login')
+      .then(res => res.json())
+      .then(login => this.setState({ loginList: login }))
 }
 
   render() {
-    const { logged, toggleLogin, whologged } = this.state
+    const { logged, toggleLogin, whologged, loginList, tasks } = this.state
     return (
       <div className="App">
         <Login logged={logged}
@@ -56,10 +62,15 @@ fetch('/tasks')
            toggleLoginForm={this.toggleLoginForm}
            islogged={this.islogged}
            whologged={this.whologged}
+           loginList={loginList}
           />}
           <LoggedUser
           user={whologged}
         />
+        {whologged.status ==="admin" && <Admin /> }
+        <Admin
+          tasks={tasks}
+         />
       </div>
     );
   }
@@ -72,10 +83,10 @@ function LoggedUser (props) {
    return (
       <div className="admin">
       {  <div className="admin-name">
-      { props.user.length!==0 && 'Connected as ' + props.user.username}
+      { props.user.status==="admin" && 'Connected as admin: ' + props.user.username}
     </div> }
     {  <div className="admin-name">
-    { props.user.length===0 && 'Connected as guess'}
+    { props.user.status==="user" && 'Connected as user: ' + props.user.username}
   </div> }
       </div>
    )

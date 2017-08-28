@@ -5,14 +5,17 @@
    font-family: 'Roboto', sans-serif;
    font-family: 'Montserrat', sans-serif;
    font-size: 16px;
+   margin: 0;
+   padding: 0;
 }
 
 .App {
   background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   padding: 0;
   margin: 0;
+  width: 100vw;
 }
 
 .navCon {
@@ -20,6 +23,8 @@
   width: 100vw;
   height: 40px;
   align-items: center;
+  padding: 0;
+  margin: 0;
 }
 
 .header {
@@ -105,4 +110,81 @@ font-size: 1.5rem;
   font-size: 0.8rem;
 }
 
+.admin-control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.add-task {
+  cursor: pointer;
+  width: 150px;
+  padding: 3px;
+  background-color: #6BF178;
+  font-weight: 600;
+  color: white;
+  border: none;
+}
+
 /* admin ends */
+
+/* task list */
+
+.task-con {
+  margin: 30px 0;
+}
+
+.task-con div {
+  width: 40vw;
+}
+
+.task-title {
+  display: flex;
+  justify-content: center;
+  background-color: #0bcdfe;
+  padding: 5px 0;
+  color:  white;
+}
+
+.for-whom {
+  display: flex;
+  justify-content: center;
+  font-size: 0.9rem;
+  padding: 5px 0;
+  background-color: #FFFFFF;
+  margin-bottom: 1px;
+}
+
+.task-text {
+    background-color: #FFFFFF;
+    font-size: 0.9rem;
+    margin: 0;
+    padding: 5px 0;
+}
+
+.buttons {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.buttons button {
+  border: none;
+  cursor: pointer;
+  margin: 1px;
+  padding: 5px;
+  background-color: #14bdfe;
+  width: 50px;
+}
+
+.edit {
+  color: white;
+}
+
+.delete {
+  color: white;
+}
+
+/* task list ends */
