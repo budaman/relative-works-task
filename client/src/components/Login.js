@@ -6,7 +6,7 @@ class Login extends Component {
 
 
   render() {
-    const { loged } = this.props
+    const { logged } = this.props
 
     return (
       <div>
@@ -15,14 +15,17 @@ class Login extends Component {
             <div className="title">Task Manager</div>
             </div>
           <div className="loginCon">
-            {!loged &&<button
+            {!logged &&<button
               onClick={()=>{
                 this.props.toggleLoginForm()
               }}
               >Log In</button>}
-            {loged &&
+            {logged &&
               <button
-              onClick={()=> this.props.isLoged()}
+              onClick={()=> {
+                this.props.islogged()
+                this.props.whologged('')
+              }}
               >Log Out</button>}
 
           </div>

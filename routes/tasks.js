@@ -9,10 +9,14 @@ router.get('/', function(req, res, next) {
   // And insert something like this instead:
   res.json([{
   	id: 1,
-  	task: "padaryti kavos"
+  	task: "padaryti kavos",
+    isDone: false,
+    forWhom: 'manager'
   }, {
   	id: 2,
-  	task: "paskambinti ukvedžiui"
+  	task: "paskambinti ukvedžiui",
+    isDone: false,
+    forWhom: 'programmer'
   }]);
 });
 

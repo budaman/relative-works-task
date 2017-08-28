@@ -93,3 +93,16 @@ font-size: 1.5rem;
 }
 
 /*Login Form ends */
+
+/* admin */
+
+.admin {
+  display: flex;
+  justify-content: center;
+}
+
+.admin-name {
+  font-size: 0.8rem;
+}
+
+/* admin ends */

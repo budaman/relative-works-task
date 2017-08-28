@@ -7,7 +7,7 @@ class LoginForm extends Component {
     username: "",
     password: "",
     login: [],
-    isLoged: false,
+    islogged: false,
     warning: false
   }
 
@@ -20,15 +20,15 @@ class LoginForm extends Component {
   handleLogin = ()=> {
     const { username, password, login } = this.state
 
-    let isLoged = login.find((log)=>{
+    let islogged = login.find((log)=>{
      return  log.username === username && log.password === password ? true: false
     })
-    if(isLoged) {
+    if(islogged) {
     this.props.toggleLoginForm()
-    this.props.whoLoged(isLoged)
-    this.props.isLoged()
+    this.props.whologged(islogged)
+    this.props.islogged()
     this.setState({
-      isLoged,
+      islogged,
       warning: false
      })
   } else {

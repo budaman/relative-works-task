@@ -8,9 +8,9 @@ class App extends Component {
   state = {
     tasks: [],
     loading: true,
-    loged: false,
+    logged: false,
     toggleLogin: false,
-    whoLoged: []
+    whologged: []
   }
 
   toggleLoginForm = () => {
@@ -19,15 +19,15 @@ class App extends Component {
     })
   }
 
-  isLoged = ()=> {
+  islogged = ()=> {
     this.setState({
-      loged: !this.state.loged
+      logged: !this.state.logged
     })
   }
 
-  whoLoged = (user)=> {
+  whologged = (user)=> {
     this.setState({
-      whoLoged: user
+      whologged: user
     })
   }
 
@@ -44,22 +44,39 @@ fetch('/tasks')
 }
 
   render() {
-    const { loged, toggleLogin } = this.state
+    const { logged, toggleLogin, whologged } = this.state
     return (
       <div className="App">
-        <Login loged={loged}
+        <Login logged={logged}
           toggleLoginForm={this.toggleLoginForm}
-          isLoged={this.isLoged}
+          islogged={this.islogged}
+          whologged={this.whologged}
         />
         {toggleLogin && <LoginForm
            toggleLoginForm={this.toggleLoginForm}
-           isLoged={this.isLoged}
-           whoLoged={this.whoLoged}
+           islogged={this.islogged}
+           whologged={this.whologged}
           />}
-          <LogedUser />
+          <LoggedUser
+          user={whologged}
+        />
       </div>
     );
   }
 }
 
 export default App;
+
+
+function LoggedUser (props) {
+   return (
+      <div className="admin">
+      {  <div className="admin-name">
+      { props.user.length!==0 && 'Connected as ' + props.user.username}
+    </div> }
+    {  <div className="admin-name">
+    { props.user.length===0 && 'Connected as guess'}
+  </div> }
+      </div>
+   )
+}
