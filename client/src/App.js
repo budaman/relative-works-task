@@ -1,13 +1,34 @@
 import React, { Component } from 'react';
 import './App.css';
 import Login from './components/Login.js';
+import LoginForm from './components/LoginForm';
 
 class App extends Component {
 
   state = {
     tasks: [],
     loading: true,
-    loged: false
+    loged: false,
+    toggleLogin: false,
+    whoLoged: []
+  }
+
+  toggleLoginForm = () => {
+    this.setState({
+      toggleLogin: !this.state.toggleLogin
+    })
+  }
+
+  isLoged = ()=> {
+    this.setState({
+      loged: !this.state.loged
+    })
+  }
+
+  whoLoged = (user)=> {
+    this.setState({
+      whoLoged: user
+    })
   }
 
   componentDidMount() {
@@ -23,11 +44,19 @@ fetch('/tasks')
 }
 
   render() {
-    const { loged } = this.state
+    const { loged, toggleLogin } = this.state
     return (
       <div className="App">
-        <Login loged={loged} />
-
+        <Login loged={loged}
+          toggleLoginForm={this.toggleLoginForm}
+          isLoged={this.isLoged}
+        />
+        {toggleLogin && <LoginForm
+           toggleLoginForm={this.toggleLoginForm}
+           isLoged={this.isLoged}
+           whoLoged={this.whoLoged}
+          />}
+          <LogedUser />
       </div>
     );
   }

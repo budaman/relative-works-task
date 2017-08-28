@@ -11,6 +11,8 @@
   background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
   width: 100vw;
   height: 100vh;
+  padding: 0;
+  margin: 0;
 }
 
 .navCon {
@@ -46,3 +48,48 @@ font-size: 1.5rem;
   border-radius: 1px;
   cursor: pointer;
 }
+
+/*Login Form*/
+
+.loginForm {
+  position: absolute;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.closeButton {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+  color: white;
+  font-size: 2.5rem;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputs input {
+  margin-bottom: 7px;
+}
+
+.warning {
+  position: absolute;
+  margin: 0 auto;
+  top: 20%;
+  color: #FF5964;
+}
+
+/*Login Form ends */
