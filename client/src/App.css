@@ -199,11 +199,17 @@ font-size: 1.5rem;
 }
 
 #isDone {
-  color: #6BF178;
+  color: white;
+  background-color: #6BF178;
+  display: flex;
+  justify-content: center;
 }
 
 #isNotDone {
-  color: #FF5964;
+  color: white;
+  background-color: #FF5964;
+  display: flex;
+  justify-content: center;
 }
 
 .isDoneCon input {

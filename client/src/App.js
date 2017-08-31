@@ -106,8 +106,9 @@ refresh = ()=> {
           toggleCreateTask={this.toggleCreateTask}
           toggleEdit={this.toggleEdit}
           refresh={this.refresh}
-          editId={this.edcreitId}
+          editId={this.editId}
          /> }
+
 
         {toggleCreateTask  && <CreateTask
           toggleCreateTask={this.toggleCreateTask}

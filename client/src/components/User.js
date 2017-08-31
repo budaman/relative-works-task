@@ -25,7 +25,7 @@ class User extends Component {
           <div className="for-whom"> for {tasks.forWhom} </div>
           <div className="task-text">{tasks.task}</div>
           { tasks.isDone === false && <div className="isDoneCon">
-             <div> It's not finished yet. Mark when it's done. </div>
+             <div id="isNotDone"> It's not finished yet. Mark when it will be done. </div>
              <input id={tasks.id} onChange={this.handleChange} type="checkbox" checked={tasks.isDone} />
            </div> }
 

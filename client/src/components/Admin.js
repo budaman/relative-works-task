@@ -42,6 +42,13 @@ handleEdit = (e) => {
           <div className="task-title"> {tasks.title} </div>
           <div className="for-whom"> for {tasks.forWhom} </div>
           <div className="task-text">{tasks.task}</div>
+          { tasks.isDone === false && <div className="isDoneConAdmin">
+             <div id="isNotDone"> It's not finished yet.  </div>
+           </div> }
+
+           { tasks.isDone === true && <div className="isDoneConAdmin ">
+              <div id="isDone"> It's done</div>
+            </div> }
           <div className="buttons">
             <button
               className="edit"
@@ -54,13 +61,7 @@ handleEdit = (e) => {
               onClick={this.handleDelete}
               >Delete</button>
           </div>
-          { tasks.isDone === false && <div className="isDoneConAdmin">
-             <div id="isNotDone"> It's not finished yet.  </div>
-           </div> }
 
-           { tasks.isDone === true && <div className="isDoneCon ">
-              <div id="isDone"> It's done</div>
-            </div> }
         </div>
       )
     })
