@@ -5,10 +5,37 @@ class Admin extends Component {
 
 
 
-  render() {
+handleEdit = (e) => {
+  let id = e.currentTarget.id
+  console.log(id)
 
+  this.props.editId(id)
+
+  this.props.toggleEdit()
+}
+
+  handleDelete = (e)=> {
+    let id = e.currentTarget.id
+    console.log(id)
+    fetch('taskList', {
+    method: 'delete',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "id" : id
+    })
+  })
+  .then(res => {
+    if (res.ok) return res.json()
+  }).then(data => {
+    console.log(data)
+  })
+    this.props.refresh()
+  }
+
+  render() {
     const { tasks } = this.props
-    console.log(tasks)
     let taskList = tasks.map((tasks, i) => {
       return(
         <div key={tasks._id} className="task-con">
@@ -16,16 +43,30 @@ class Admin extends Component {
           <div className="for-whom"> for {tasks.forWhom} </div>
           <div className="task-text">{tasks.task}</div>
           <div className="buttons">
-            <button className="edit">Edit</button>
-            <button className="delete">Delete</button>
+            <button
+              className="edit"
+              id={tasks.id}
+              onClick={this.handleEdit}
+              >Edit</button>
+            <button
+              className="delete"
+              id={tasks.id}
+              onClick={this.handleDelete}
+              >Delete</button>
           </div>
         </div>
       )
     })
 
+
+
     return (
       <div className="admin-control">
-        <button className="add-task">Create Task</button>
+        <button className="add-task"
+          onClick={()=>{
+          this.props.toggleCreateTask()
+          }}
+          >Create Task</button>
         <div className="all-tasks">
           {taskList}
         </div>

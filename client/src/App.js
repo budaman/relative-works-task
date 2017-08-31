@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import Login from './components/Login.js';
+import Login from './components/Login';
 import LoginForm from './components/LoginForm';
-import Admin from './components/Admin.js'
+import Admin from './components/Admin'
+import CreateTask from './components/CreateTask'
+import ToggleEdit from './components/ToggleEdit'
 
 class App extends Component {
 
@@ -11,14 +13,34 @@ class App extends Component {
     loading: true,
     logged: false,
     toggleLogin: false,
+    toggleCreateTask: false,
+    toggleEdit: false,
     whologged: [],
-    loginList: []
+    loginList: [],
+    editId: ""
+  }
+
+
+  editId = (id)=> {
+    this.setState({editId: id})
   }
 
 
   toggleLoginForm = () => {
     this.setState({
       toggleLogin: !this.state.toggleLogin
+    })
+  }
+
+  toggleEdit = () => {
+    this.setState({
+      toggleEdit: !this.state.toggleEdit
+    })
+  }
+
+  toggleCreateTask = () => {
+    this.setState({
+      toggleCreateTask: !this.state.toggleCreateTask
     })
   }
 
@@ -49,8 +71,19 @@ fetch('/tasks')
       .then(login => this.setState({ loginList: login }))
 }
 
+refresh = ()=> {
+  fetch('/tasks')
+     .then(res => res.json())
+     .then(tasks => this.setState({
+       tasks,
+       loading: false
+     }));
+}
+
+
+
   render() {
-    const { logged, toggleLogin, whologged, loginList, tasks } = this.state
+    const { logged, toggleLogin, toggleCreateTask, whologged, loginList, tasks, toggleEdit } = this.state
     return (
       <div className="App">
         <Login logged={logged}
@@ -67,10 +100,31 @@ fetch('/tasks')
           <LoggedUser
           user={whologged}
         />
-        {whologged.status ==="admin" && <Admin /> }
-        <Admin
+        {whologged.status ==="admin" && <Admin
           tasks={tasks}
-         />
+          toggleCreateTask={this.toggleCreateTask}
+         /> }
+        <Admin tasks={tasks}
+          toggleCreateTask={this.toggleCreateTask}
+          toggleEdit={this.toggleEdit}
+          refresh={this.refresh}
+          editId={this.editId}
+        />
+        {toggleCreateTask && <CreateTask
+          toggleCreateTask={this.toggleCreateTask}
+           loginList={loginList}
+           refresh={this.refresh}
+         />}
+         {
+           toggleEdit && <ToggleEdit
+             toggleEdit={this.toggleEdit}
+             loginList={loginList}
+             refresh={this.refresh}
+             editId={this.state.editId}
+             tasks={tasks}
+
+           />
+         }
       </div>
     );
   }
