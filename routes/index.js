@@ -54,4 +54,19 @@ router.put('/taskList', (req, res) => {
   })
 })
 
+router.put('/isDone', (req, res) => {
+  db.collection('taskList')
+  .findOneAndUpdate({id: req.body.id}, {
+    $set: {
+      isDone: req.body.isDone
+    }
+  }, {
+    sort: {_id: -1},
+    upsert: true
+  }, (err, result) => {
+    if (err) return res.send(err)
+    res.send(result)
+  })
+})
+
 module.exports = router;

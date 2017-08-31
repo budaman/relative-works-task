@@ -187,6 +187,35 @@ font-size: 1.5rem;
   color: white;
 }
 
+.isDoneCon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.isDoneCon div {
+  width: 30vw;
+  color: #FF5964;
+}
+
+#isDone {
+  color: #6BF178;
+}
+
+#isNotDone {
+  color: #FF5964;
+}
+
+.isDoneCon input {
+  width: 20px;
+  height: 20px;
+}
+
+.isDoneConAdmin {
+  display: flex;
+  justify-content: center;
+}
+
 /* task list ends */
 
 

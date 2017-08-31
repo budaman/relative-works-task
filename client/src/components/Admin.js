@@ -54,6 +54,13 @@ handleEdit = (e) => {
               onClick={this.handleDelete}
               >Delete</button>
           </div>
+          { tasks.isDone === false && <div className="isDoneConAdmin">
+             <div id="isNotDone"> It's not finished yet.  </div>
+           </div> }
+
+           { tasks.isDone === true && <div className="isDoneCon ">
+              <div id="isDone"> It's done</div>
+            </div> }
         </div>
       )
     })

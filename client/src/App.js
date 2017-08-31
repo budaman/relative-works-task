@@ -5,6 +5,7 @@ import LoginForm from './components/LoginForm';
 import Admin from './components/Admin'
 import CreateTask from './components/CreateTask'
 import ToggleEdit from './components/ToggleEdit'
+import User from './components/User'
 
 class App extends Component {
 
@@ -103,28 +104,29 @@ refresh = ()=> {
         {whologged.status ==="admin" && <Admin
           tasks={tasks}
           toggleCreateTask={this.toggleCreateTask}
-         /> }
-        <Admin tasks={tasks}
-          toggleCreateTask={this.toggleCreateTask}
           toggleEdit={this.toggleEdit}
           refresh={this.refresh}
-          editId={this.editId}
-        />
-        {toggleCreateTask && <CreateTask
+          editId={this.edcreitId}
+         /> }
+
+        {toggleCreateTask  && <CreateTask
           toggleCreateTask={this.toggleCreateTask}
            loginList={loginList}
            refresh={this.refresh}
          />}
-         {
-           toggleEdit && <ToggleEdit
+         {toggleEdit && <ToggleEdit
              toggleEdit={this.toggleEdit}
              loginList={loginList}
              refresh={this.refresh}
              editId={this.state.editId}
-             tasks={tasks}
+             tasks={tasks} />}
+        {whologged.status ==="user" && <User
+         tasks={tasks}
+         whologged={whologged}
+         refresh={this.refresh}
+       />}
 
-           />
-         }
+
       </div>
     );
   }
