@@ -36,4 +36,22 @@ req.body.id}
   })
 })
 
+router.put('/taskList', (req, res) => {
+  db.collection('taskList')
+  .findOneAndUpdate({id: req.body.oldId}, {
+    $set: {
+      task: req.body.task,
+      forWhom: req.body.forWhom,
+      title: req.body.title,
+      id: req.body.id
+    }
+  }, {
+    sort: {_id: -1},
+    upsert: true
+  }, (err, result) => {
+    if (err) return res.send(err)
+    res.send(result)
+  })
+})
+
 module.exports = router;

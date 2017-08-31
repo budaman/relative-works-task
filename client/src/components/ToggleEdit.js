@@ -7,8 +7,45 @@ class ToggleEdit extends Component {
     task: "",
     forWhom: "",
     title: "",
-    id: ""
   }
+
+  componentDidMount() {
+    const { editId, tasks } = this.props
+
+    let current = tasks.find(task => {
+     return  task.id === editId
+    })
+
+    let forWhom = current.forWhom
+    let task = current.task
+    let title = current.title
+
+    this.setState({
+      task,
+      title,
+      forWhom
+    })
+  }
+
+  handleClick = ()=> {
+    const { task, forWhom, title } = this.state
+    if(task!=="" && forWhom !=="" && title !=="") {
+    fetch('taskList', {
+        method: 'put',
+       headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          task,
+          forWhom,
+          title,
+          id: task+forWhom+title,
+          oldId: this.props.editId
+        })
+    })
+    this.props.refresh()
+    this.props.toggleEdit()
+  }else {
+    alert('not everything is filled')
+  } }
 
   render() {
     const { loginList, editId, tasks } = this.props
