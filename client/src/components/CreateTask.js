@@ -51,14 +51,14 @@ class CreateTask extends Component {
             }}
             > X </div>
           <div className="inputs">
-            <div className="choose">Name of Task</div>
+            <div className="choose">Uzduoties pavadinimas</div>
             <input type="text" onChange={(e)=>this.setState({title: e.target.value})} />
-            <div className="choose">For whom is task</div>
+            <div className="choose">Kam skirta uzduotis</div>
             <select onChange={(e)=>this.setState({forWhom: e.target.value})}>
-              <option value="" defaultValue>select user</option>
+              <option value="" defaultValue>pasirinkite kam skirta uzduotis</option>
               {users}
             </select>
-            <div className="choose">Describe the task</div>
+            <div className="choose">Apibudinkite uzduoti</div>
           <textarea  onChange={(e)=>this.setState({task: e.target.value})} ></textarea>
           <button
             className="create-task"

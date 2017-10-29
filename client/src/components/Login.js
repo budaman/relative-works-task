@@ -11,21 +11,21 @@ class Login extends Component {
     return (
         <div className="navCon">
           <div className="header">
-            <div className="title">Task Manager</div>
+            <div className="title">Praktikos Užduotis</div>
             </div>
           <div className="loginCon">
             {!logged &&<button
               onClick={()=>{
                 this.props.toggleLoginForm()
               }}
-              >Log In</button>}
+              >Prisijungti</button>}
             {logged &&
               <button
               onClick={()=> {
                 this.props.islogged()
                 this.props.whologged('')
               }}
-              >Log Out</button>}
+              >Atsijungti</button>}
 
           </div>
         </div>

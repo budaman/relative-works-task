@@ -43,11 +43,11 @@ handleEdit = (e) => {
           <div className="for-whom"> for {tasks.forWhom} </div>
           <div className="task-text">{tasks.task}</div>
           { tasks.isDone === false && <div className="isDoneConAdmin">
-             <div id="isNotDone"> It's not finished yet.  </div>
+             <div id="isNotDone"> Užduotis neatlikta.  </div>
            </div> }
 
            { tasks.isDone === true && <div className="isDoneConAdmin ">
-              <div id="isDone"> It's done</div>
+              <div id="isDone"> Užduotis atlikta.</div>
             </div> }
           <div className="buttons">
             <button
@@ -74,7 +74,7 @@ handleEdit = (e) => {
           onClick={()=>{
           this.props.toggleCreateTask()
           }}
-          >Create Task</button>
+          >Sukurti uzduoti</button>
         <div className="all-tasks">
           {taskList}
         </div>

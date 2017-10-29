@@ -22,15 +22,15 @@ class User extends Component {
       return(
         <div key={tasks._id} className="task-con">
           <div className="task-title"> {tasks.title} </div>
-          <div className="for-whom"> for {tasks.forWhom} </div>
+          <div className="for-whom"> Kam skirta? : {tasks.forWhom} </div>
           <div className="task-text">{tasks.task}</div>
           { tasks.isDone === false && <div className="isDoneCon">
-             <div id="isNotDone"> It's not finished yet. Mark when it will be done. </div>
+             <div id="isNotDone"> Užduotis dar nepadaryta. </div>
              <input id={tasks.id} onChange={this.handleChange} type="checkbox" checked={tasks.isDone} />
            </div> }
 
            { tasks.isDone === true && <div className="isDoneCon ">
-              <div id="isDone"> It's done</div>
+              <div id="isDone"> Užduotis atlikta. </div>
               <input id={tasks.id} onChange={this.handleChange} type="checkbox" checked={tasks.isDone} />
             </div> }
 

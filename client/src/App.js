@@ -140,10 +140,10 @@ function LoggedUser (props) {
    return (
       <div className="admin">
       {  <div className="admin-name">
-      { props.user.status==="admin" && 'Connected as admin: ' + props.user.username}
+      { props.user.status==="admin" && 'Adminas: ' + props.user.username}
     </div> }
     {  <div className="admin-name">
-    { props.user.status==="user" && 'Connected as user: ' + props.user.username}
+    { props.user.status==="user" && 'Vartotojas: ' + props.user.username}
   </div> }
       </div>
    )
